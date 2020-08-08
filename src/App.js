@@ -1,16 +1,31 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "./actions";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(actions.moviesList());
+  }
 
   render() {
-
-    return(
+    return (
       <div>
-        Hello
+        {this.props.movies
+          ? this.props.movies.map((item) => {
+              return <div key={item.id}>{item.name}</div>;
+            })
+          : null
+        }
       </div>
-    )
+    );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    movies: state.movies,
+  };
+}
+
+export default connect(mapStateToProps)(App);
