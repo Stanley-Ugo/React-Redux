@@ -4,12 +4,13 @@ import App from "./App";
 
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={createStoreWithMiddleware}>
+    <Provider store={createStoreWithMiddleware(reducers)}>
       <App />
     </Provider>
   </React.StrictMode>,
