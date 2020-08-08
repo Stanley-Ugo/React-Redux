@@ -1,9 +1,11 @@
-
+import {
+    MOVIES_LIST,
+} from '../types'
 
 
 export function moviesList(){
     return {
-        type: 'MOVIES_LIST',
+        type: MOVIES_LIST,
         payload: [
             {id:1, name: "Pulp Fiction"},
             {id:2, name: "Pacific Rim"},
